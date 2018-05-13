@@ -28,9 +28,24 @@ class GamesList extends React.Component {
 
   render() {
     return (
-      <div>
-        games arena
-        {console.log(this.props.games)}
+      <div className="gameslist__container">
+      Total Games: {this.props.games.length!==0?this.props.games.length:0}
+        <div className="gameslist">
+        {this.props.games.length === 0
+          ? "Fetching data...."
+          : this.props.games.map(game => {
+              return (
+                <div className="game">
+                  <h2>{game.title}</h2>
+                  <p>Genre: {game.genre}</p>
+                  <p>Platform: {game.platform} </p>
+                  <p>Release Year: {game.release_year} </p>
+                  <p>Score: {game.score} </p>
+                  <p>Editor Choice: {game.editors_choice} </p>
+                </div>
+              );
+            })}
+            </div>
       </div>
     );
   }

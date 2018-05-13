@@ -1,0 +1,15 @@
+.gameslist{
+  margin-left: 1rem;
+  margin-right: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-gap: 0.5rem;
+}
+
+.game{
+  padding: 1rem;
+  background: $primary;
+  color: $white;
+  display: flex;
+  flex-direction: column;
+}

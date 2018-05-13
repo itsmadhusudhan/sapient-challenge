@@ -23,7 +23,7 @@ class GamesListFilter extends React.Component {
     return (
       <div className="games__filters--bar">
         <div className="games__filter">
-          Platform:
+          Platform: 
           <select
             defaultValue=""
             onChange={e => {
@@ -44,7 +44,7 @@ class GamesListFilter extends React.Component {
         </div>
 
         <div className="games__filter">
-          Genre:{" "}
+          Genre: {" "}
           <select
             onChange={e => {
               this.props.dispatch(setGenre(e.target.value));
@@ -63,7 +63,7 @@ class GamesListFilter extends React.Component {
           </select>
         </div>
         <div className="games__filter">
-          Score:{" "}
+          Score: {" "}
           <select
             onChange={e => {
               this.props.dispatch(setScore(e.target.value));
@@ -87,7 +87,7 @@ class GamesListFilter extends React.Component {
           and above
         </div>
         <div className="games__filter">
-          Release Year:
+          Release Year: 
           <select
             onChange={e => {
               console.log(e.target.value);
@@ -114,17 +114,18 @@ class GamesListFilter extends React.Component {
         </div>
         <div className="games__filter">
           Editor's Choice:{" "}
-          <select onChange={(e)=>{
-            if(e.target.value==="yes"){
-              this.props.dispatch(setEditorsChoice("Y"));
-            }
-            else if(e.target.value==="no"){
-              this.props.dispatch(setEditorsChoice("N"));
-            }else{
-              this.props.dispatch(setEditorsChoice(""))
-            }
-          }}>
-          <option value="">All</option>
+          <select
+            onChange={e => {
+              if (e.target.value === "yes") {
+                this.props.dispatch(setEditorsChoice("Y"));
+              } else if (e.target.value === "no") {
+                this.props.dispatch(setEditorsChoice("N"));
+              } else {
+                this.props.dispatch(setEditorsChoice(""));
+              }
+            }}
+          >
+            <option value="all">All</option>
             <option value="yes">Yes</option>
             <option value="no">No</option>
           </select>
