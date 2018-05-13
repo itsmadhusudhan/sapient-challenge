@@ -83,33 +83,52 @@ class GamesListFilter extends React.Component {
                     </option>
                   ))
               : ""}
-          </select> and above
+          </select>{" "}
+          and above
         </div>
         <div className="games__filter">
-        Release Year:
-        <select
-          onChange={e => {
-            console.log(e.target.value)
-            this.props.dispatch(setReleaseYear(e.target.value==="All"?e.target.value:parseInt(e.target.value)));
-          }}
-        >
-          <option value="All">All</option>
-          {this.state.games
-            ? [
-                ...new Set(
-                  this.props.games.map(game => game.release_year)
+          Release Year:
+          <select
+            onChange={e => {
+              console.log(e.target.value);
+              this.props.dispatch(
+                setReleaseYear(
+                  e.target.value === "All"
+                    ? e.target.value
+                    : parseInt(e.target.value)
                 )
-              ]
-                .sort((a, b) => a > b)
-                .map(year => (
-                  <option key={year} value={year}>
-                    {year}
-                  </option>
-                ))
-            : ""}
-        </select>
+              );
+            }}
+          >
+            <option value="All">All</option>
+            {this.state.games
+              ? [...new Set(this.props.games.map(game => game.release_year))]
+                  .sort((a, b) => a > b)
+                  .map(year => (
+                    <option key={year} value={year}>
+                      {year}
+                    </option>
+                  ))
+              : ""}
+          </select>
         </div>
-        <div className="games__filter" />
+        <div className="games__filter">
+          Editor's Choice:{" "}
+          <select onChange={(e)=>{
+            if(e.target.value==="yes"){
+              this.props.dispatch(setEditorsChoice("Y"));
+            }
+            else if(e.target.value==="no"){
+              this.props.dispatch(setEditorsChoice("N"));
+            }else{
+              this.props.dispatch(setEditorsChoice(""))
+            }
+          }}>
+          <option value="">All</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
       </div>
     );
   }
