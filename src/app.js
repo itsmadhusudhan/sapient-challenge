@@ -15,15 +15,15 @@ store.subscribe(()=>{
   console.log(store.getState());
 })
 
-store.dispatch(setPlatform("PlayStation Vita"));
+// store.dispatch(setPlatform("PlayStation Vita"));
 
-store.dispatch(setScore(5));
+// store.dispatch(setScore(5));
 
-store.dispatch(setReleaseYear(2012));
+// store.dispatch(setReleaseYear(2012));
 
-store.dispatch(setGenre("Action"));
+// store.dispatch(setGenre("Action"));
 
-store.dispatch(setEditorsChoice("N"))
+// store.dispatch(setEditorsChoice("N"))
 
 
 
