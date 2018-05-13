@@ -1,7 +1,38 @@
 header{
   display: flex;
-  justify-content: center;
-  padding: 1rem 0;
+  align-items: center;
+  padding: 0.4rem;
   background: $blue;
   color: $white;
+  h1{
+    padding-left: 20px;
+    font-size: 28px;
+  }
 }
+
+.header__item{
+  text-decoration: none;
+  color: $white;
+  padding: 0 20px;
+  font-weight: 600;
+  &:hover{
+    color: $red;
+  }
+}
+
+.header__end{
+  margin-left: auto;
+}
+
+@media screen and (max-width:500px){
+  header{
+    flex-direction: column;
+    h1{
+      font-size: 24px;
+    }
+  }
+  .header__end{
+    margin: 0;
+  }
+}
+

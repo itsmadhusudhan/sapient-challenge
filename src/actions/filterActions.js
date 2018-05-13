@@ -22,4 +22,10 @@ export const setEditorsChoice=(choice)=>({
 export const setReleaseYear=(year)=>({
   type:"SET_RELEASE_YEAR",
   year
+});
+
+
+export const setTitle=(title)=>({
+  type:"SET_TITLE",
+  title
 })

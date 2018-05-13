@@ -1,6 +1,33 @@
+.games__filters{
+  
+}
+
+.games__filters--input{
+  text-align: center;
+  padding: 1rem 0;
+  input{
+    height: 2rem;
+    width: 400px;
+    border-radius: 3px;
+    border:1px solid $black;
+    padding-left: 5px;
+  }
+}
+
+
+
 .games__filters--bar{
   display: flex;
   justify-content: space-around;
   padding: 1.5rem 0;
   flex-wrap: wrap;
+  font-weight: 600;
+}
+
+@media screen and (max-width:500px){
+  .games__filters--input{
+    input{
+      width: 300px;
+    }
+  }
 }

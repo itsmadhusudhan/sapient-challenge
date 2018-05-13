@@ -3,7 +3,8 @@ const filtersReducerDefaultState={
   score:0,
   genre:"",
   editorsChoice:"",
-  releaseYear:""
+  releaseYear:"",
+  title:""
 }
 
 const filtersReducer=(state=filtersReducerDefaultState,action)=>{
@@ -18,6 +19,8 @@ const filtersReducer=(state=filtersReducerDefaultState,action)=>{
       return {...state,editorsChoice:action.choice};
     case "SET_RELEASE_YEAR":
       return {...state,releaseYear:action.year};
+    case "SET_TITLE":
+      return {...state,title:action.title}
     default: return state;
   }
 

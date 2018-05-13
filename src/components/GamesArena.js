@@ -3,15 +3,32 @@ import { connect} from "react-redux";
 import Header from "./Header";
 import GamesList from "./GamesList";
 import GamesListFilters from "./GamesListFilters";
+import {fetchGamesWithRedux} from "../actions/gamesActions";
 
-const GamesArena=()=>{
+
+class GamesArena extends React.Component{
+  componentDidMount() {
+    this.props.dispatch(fetchGamesWithRedux());
+  }
+
+  render(){
+
   return(
-    <React.Fragment>
+    <div>
     <Header/>
+    <React.Fragment>
     <GamesListFilters/>
     <GamesList/>
     </React.Fragment>
+    </div>
   )
 }
+}
 
-export default GamesArena;
+const mapStateToProps=(state)=>{
+  return{
+    games:state.games
+  }
+}
+
+export default connect(mapStateToProps)(GamesArena);

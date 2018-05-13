@@ -5,8 +5,10 @@ import {
   setGenre,
   setEditorsChoice,
   setReleaseYear,
-  setScore
+  setScore,
+  setTitle
 } from "../actions/filterActions";
+import GamesListFilterItem from "./GamesListFilterItem";
 
 class GamesListFilter extends React.Component {
   state = {
@@ -21,114 +23,24 @@ class GamesListFilter extends React.Component {
 
   render() {
     return (
-      <div className="games__filters--bar">
-        <div className="games__filter">
-          Platform: 
-          <select
-            defaultValue=""
-            onChange={e => {
-              this.props.dispatch(setPlatform(e.target.value));
-            }}
-          >
-            <option value="">All</option>
-            {this.state.games
-              ? [...new Set(this.props.games.map(game => game.platform))].map(
-                  platform => (
-                    <option key={platform} value={platform}>
-                      {platform}
-                    </option>
-                  )
-                )
-              : ""}
-          </select>
+      <div className="games__filters">
+        <div className="games__filters--input">
+          <input
+            onChange={e => 
+            this.props.dispatch(setTitle(e.target.value))
+            }
+            placeholder=" Search Games by Titles"
+          />
         </div>
-
-        <div className="games__filter">
-          Genre: {" "}
-          <select
-            onChange={e => {
-              this.props.dispatch(setGenre(e.target.value));
-            }}
-          >
-            <option value="">All</option>
-            {this.state.games
-              ? [...new Set(this.props.games.map(game => game.genre))].map(
-                  genre => (
-                    <option key={genre} value={genre}>
-                      {genre}
-                    </option>
-                  )
-                )
-              : ""}
-          </select>
-        </div>
-        <div className="games__filter">
-          Score: {" "}
-          <select
-            onChange={e => {
-              this.props.dispatch(setScore(e.target.value));
-            }}
-          >
-            <option value="">All</option>
-            {this.state.games
-              ? [
-                  ...new Set(
-                    this.props.games.map(game => Math.ceil(game.score))
-                  )
-                ]
-                  .sort((a, b) => a > b)
-                  .map(score => (
-                    <option key={score} value={score}>
-                      {score}
-                    </option>
-                  ))
-              : ""}
-          </select>{" "}
-          and above
-        </div>
-        <div className="games__filter">
-          Release Year: 
-          <select
-            onChange={e => {
-              console.log(e.target.value);
-              this.props.dispatch(
-                setReleaseYear(
-                  e.target.value === "All"
-                    ? e.target.value
-                    : parseInt(e.target.value)
-                )
-              );
-            }}
-          >
-            <option value="All">All</option>
-            {this.state.games
-              ? [...new Set(this.props.games.map(game => game.release_year))]
-                  .sort((a, b) => a > b)
-                  .map(year => (
-                    <option key={year} value={year}>
-                      {year}
-                    </option>
-                  ))
-              : ""}
-          </select>
-        </div>
-        <div className="games__filter">
-          Editor's Choice:{" "}
-          <select
-            onChange={e => {
-              if (e.target.value === "yes") {
-                this.props.dispatch(setEditorsChoice("Y"));
-              } else if (e.target.value === "no") {
-                this.props.dispatch(setEditorsChoice("N"));
-              } else {
-                this.props.dispatch(setEditorsChoice(""));
-              }
-            }}
-          >
-            <option value="all">All</option>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-          </select>
+        <div className="games__filters--bar">
+          <GamesListFilterItem games={this.props.games} name="Platform" />
+          <GamesListFilterItem games={this.props.games} name="Genre" />
+          <GamesListFilterItem games={this.props.games} name="Score" />
+          <GamesListFilterItem games={this.props.games} name="Release Year" />
+          <GamesListFilterItem
+            games={this.props.games}
+            name="Editor's Choice"
+          />
         </div>
       </div>
     );
