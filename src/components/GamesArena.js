@@ -6,6 +6,7 @@ import {
   fetchGamesSuccess,
   fetchGamesError
 } from "../actions/gamesActions";
+import {selectGamesList} from "../selectors/gamesListSelector";
 
 const fetchGamesWithRedux = () => {
   return (dispatch) => {
@@ -30,7 +31,7 @@ class GamesArena extends React.Component {
       <div>
         games arena
         {
-          console.log(this.props.games[0])
+          console.log(this.props.games)
         }
       </div>
     );
@@ -39,7 +40,7 @@ class GamesArena extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    games: state.games
+    games: selectGamesList(state.games,state.filters)
   };
 };
 
