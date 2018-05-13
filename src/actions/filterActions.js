@@ -1,5 +1,4 @@
 
-
 export const setPlatform=(platformName)=>({
   type:"SET_PLATFORM",
   platformName

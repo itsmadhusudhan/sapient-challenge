@@ -11,6 +11,6 @@ const filtersReducer=(state=filtersReducerDefaultState,action)=>{
     default: return state;
   }
 
-}
+} 
 
 export default filtersReducer;
