@@ -86,7 +86,28 @@ class GamesListFilter extends React.Component {
           </select> and above
         </div>
         <div className="games__filter">
-        
+        Release Year:
+        <select
+          onChange={e => {
+            console.log(e.target.value)
+            this.props.dispatch(setReleaseYear(e.target.value==="All"?e.target.value:parseInt(e.target.value)));
+          }}
+        >
+          <option value="All">All</option>
+          {this.state.games
+            ? [
+                ...new Set(
+                  this.props.games.map(game => game.release_year)
+                )
+              ]
+                .sort((a, b) => a > b)
+                .map(year => (
+                  <option key={year} value={year}>
+                    {year}
+                  </option>
+                ))
+            : ""}
+        </select>
         </div>
         <div className="games__filter" />
       </div>
