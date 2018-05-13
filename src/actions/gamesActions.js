@@ -19,3 +19,15 @@ export const fetchGamesError=()=>({
   type:"FETCH_GAMES_ERROR"
 })
 
+export const fetchGamesWithRedux = () => {
+  return dispatch => {
+    dispatch(fetchGamesRequest());
+    return fetchGames().then(([response, json]) => {
+      if (response.status === 200) {
+        dispatch(fetchGamesSuccess(json));
+      } else {
+        dispatch(fetchGamesError());
+      }
+    });
+  };
+};
