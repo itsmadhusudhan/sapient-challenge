@@ -14,6 +14,8 @@
 3. Now run `yarn build` for production app.
 or
 Run `yarn start` to start development server.
+4. run `yarn -g install live-server` to install live server or you can use any web server to serve app from public folder
+5. finally run `live-server public/` to run app on local host
 
 ## Features
 1. All the features mentioned are implemented.
@@ -24,6 +26,7 @@ Run `yarn start` to start development server.
 1. BEM for SCSS/CSS
 2. Modularity
 
+for live demo visit https://sapientchallenge.netlify.com
 
 NOTE: Included github profile and blog link
 
